@@ -1,3 +1,4 @@
+import os
 import time
 from pathlib import Path
 from typing import Callable
@@ -83,4 +84,4 @@ app.include_router(cats.router, prefix="/api")
 app.include_router(users.router, prefix='/api')
 
 if __name__ == '__main__':
-    uvicorn.run("main:app")
+    uvicorn.run("main:app", host="0.0.0.0", port=int(os.environ.get("PORT")))
