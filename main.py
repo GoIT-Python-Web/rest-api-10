@@ -2,6 +2,7 @@ import time
 from pathlib import Path
 from typing import Callable
 
+import uvicorn
 import redis.asyncio as redis
 from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.responses import HTMLResponse
@@ -80,3 +81,6 @@ app.include_router(auth.router, prefix='/api')
 app.include_router(owners.router, prefix="/api")
 app.include_router(cats.router, prefix="/api")
 app.include_router(users.router, prefix='/api')
+
+if __name__ == '__main__':
+    uvicorn.run("main:app")
